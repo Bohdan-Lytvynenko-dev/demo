@@ -2,6 +2,9 @@ package com.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Description;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
 
 import com.demo.beans.Vehicle;
 
@@ -13,15 +16,11 @@ methods. So Spring container can process the class and generate Spring Beans
 to be used in the application.
  */
 @Configuration
+@Import({ AnotherProjectConfig.class })
 public class ProjectConfig
 {
 
-	/*
-	@Bean annotation, which lets Spring know that it needs to call
-  this method when it initializes its context and adds the returned
-  value to the context.
-	 */
-	@Bean
+	@Bean(name = "audiVehicle")
 	Vehicle vehicle1()
 	{
 		var veh = new Vehicle();
@@ -29,7 +28,8 @@ public class ProjectConfig
 		return veh;
 	}
 
-	@Bean
+	@Primary
+	@Bean(value = "hondaVehicle")
 	Vehicle vehicle2()
 	{
 		var veh = new Vehicle();
@@ -37,7 +37,8 @@ public class ProjectConfig
 		return veh;
 	}
 
-	@Bean
+	@Bean({ "ferrariVehicle", "myFavouriteVehicle" })
+	@Description("This is a Vehicle class bean")
 	Vehicle vehicle3()
 	{
 		var veh = new Vehicle();
