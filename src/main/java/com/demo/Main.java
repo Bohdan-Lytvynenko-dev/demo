@@ -2,10 +2,9 @@ package com.demo;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.demo.beans.Bike;
-import com.demo.beans.Engine;
-import com.demo.beans.Vehicle;
-import com.demo.config.ProjectConfig;
+import com.demo.beans.MyService;
+import com.demo.beans.UserSession;
+import com.demo.config.ProjectScopeConfig;
 
 
 public class Main
@@ -16,23 +15,16 @@ public class Main
 
 	static void main()
 	{
-		var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
-
-		if (context.containsBean("engine"))
-		{
-			Engine engine = context.getBean(Engine.class);
-			System.out.println("Engine name = " + engine.getName());
-		}
-		if (context.containsBean("vehicle"))
-		{
-			Vehicle v = context.getBean(Vehicle.class);
-			System.out.println("Vehicle name = " + v.getName());
-			System.out.println("Vehicle engine = " + v.getEngine());
-		}
-		if (context.containsBean("bike"))
-		{
-			Bike b = context.getBean(Bike.class);
-			System.out.println("Bike model = " + b.getName());
-		}
+		var context = new AnnotationConfigApplicationContext(ProjectScopeConfig.class);
+		var myservice1 = context.getBean(MyService.class);
+		var myservice2 = context.getBean(MyService.class);
+		System.out.println(myservice1.hashCode());
+		System.out.println(myservice2.hashCode());
+		var user1 = context.getBean(UserSession.class);
+		var user2 = context.getBean(UserSession.class);
+		System.out.println(user1.hashCode());
+		System.out.println(user2.hashCode());
+		System.out.println(user1.getSessionId());
+		System.out.println(user2.getSessionId());
 	}
 }

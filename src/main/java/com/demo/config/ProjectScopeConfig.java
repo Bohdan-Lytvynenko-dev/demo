@@ -1,7 +1,7 @@
 package com.demo.config;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 
 /*
@@ -11,8 +11,7 @@ methods. So Spring container can process the class and generate Spring Beans
 to be used in the application.
  */
 @Configuration
-@Import({ MyBeanRegistrar.class })
-public class ProjectConfig
+@ComponentScan(basePackages = { "com.demo.beans" })
+public class ProjectScopeConfig
 {
-
 }
