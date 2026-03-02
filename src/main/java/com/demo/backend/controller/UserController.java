@@ -2,12 +2,20 @@ package com.demo.backend.controller;
 
 import java.util.Map;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.demo.backend.dto.UserDto;
 
 
 @RestController
@@ -56,4 +64,41 @@ public class UserController
 	{
 		return "Fetched user with query params : " + requestParams.get("name") + " and gender: " + requestParams.get("gender");
 	}
+
+	@GetMapping("/headers")
+	public String readRequestHeaders(@RequestHeader("User-Agent") String userAgent,
+			@RequestHeader(name = "User-Location", required = false, defaultValue = "Kyiv") String userLocation)
+	{
+		return "Received: " + userAgent + " " + userLocation;
+	}
+
+	@GetMapping("/headers/map")
+	public String readRequestHeadersWithMap(@RequestHeader Map<String, String> requestHeaders)
+	{
+		return "Received: " + requestHeaders.get("User-Agent") + " " + requestHeaders.get("User-Location");
+	}
+
+	@GetMapping("/headers/http-headers")
+	public String readRequestHeadersWithHttpHeaders(@RequestHeader HttpHeaders requestHeaders)
+	{
+		return "Received: " + requestHeaders.get("User-Agent") + " " + requestHeaders.get("User-Location");
+	}
+
+	@PostMapping
+	public String createUser(@RequestBody UserDto userDto) {
+		return "Created User with the data: " + userDto.toString();
+	}
+
+	@PostMapping("request-entity")
+	public ResponseEntity<String> createUserWithRequestEntity(RequestEntity<UserDto> requestEntity) {
+		HttpHeaders httpHeaders = requestEntity.getHeaders();
+		UserDto userDto = requestEntity.getBody();
+		String queryParam = requestEntity.getUrl().getQuery();
+		String pathVariables = requestEntity.getUrl().getPath();
+		// return "Created User with the data: " + userDto.toString();
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.header("Custom-Header", "ExampleValue")
+				.body("Created User with the data: " + userDto.toString());
+	}
+
 }
