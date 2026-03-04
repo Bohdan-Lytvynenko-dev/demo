@@ -1,13 +1,16 @@
-package com.demo.backend;
+package com.demo.jobportal;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+
 @SpringBootTest
-class BackendApplicationTests {
+class JobPortalApplicationTests
+{
 
 	@Test
-	void contextLoads() {
+	void contextLoads()
+	{
 	}
 
 }
