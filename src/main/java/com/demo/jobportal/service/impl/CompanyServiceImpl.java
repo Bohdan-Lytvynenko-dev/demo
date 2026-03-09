@@ -10,17 +10,15 @@ import com.demo.jobportal.entity.Company;
 import com.demo.jobportal.repository.CompanyRepository;
 import com.demo.jobportal.service.CompanyService;
 
+import lombok.RequiredArgsConstructor;
+
 
 @Service
+@RequiredArgsConstructor
 public class CompanyServiceImpl implements CompanyService
 {
 
 	private final CompanyRepository companyRepository;
-
-	public CompanyServiceImpl(CompanyRepository companyRepository)
-	{
-		this.companyRepository = companyRepository;
-	}
 
 	@Override
 	public List<CompanyDto> getAllCompanies()

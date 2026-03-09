@@ -10,10 +10,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Entity
 @Table(name = "COMPANIES")
+@Getter
+@Setter
 public class Company
 {
 
@@ -65,153 +69,4 @@ public class Company
 	@Column(name = "UPDATED_BY", length = 20)
 	private String updatedBy;
 
-	public Long getId()
-	{
-		return id;
-	}
-
-	public void setId(final Long id)
-	{
-		this.id = id;
-	}
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public void setName(final String name)
-	{
-		this.name = name;
-	}
-
-	public String getLogo()
-	{
-		return logo;
-	}
-
-	public void setLogo(final String logo)
-	{
-		this.logo = logo;
-	}
-
-	public String getIndustry()
-	{
-		return industry;
-	}
-
-	public void setIndustry(final String industry)
-	{
-		this.industry = industry;
-	}
-
-	public String getSize()
-	{
-		return size;
-	}
-
-	public void setSize(final String size)
-	{
-		this.size = size;
-	}
-
-	public BigDecimal getRating()
-	{
-		return rating;
-	}
-
-	public void setRating(final BigDecimal rating)
-	{
-		this.rating = rating;
-	}
-
-	public String getLocations()
-	{
-		return locations;
-	}
-
-	public void setLocations(final String locations)
-	{
-		this.locations = locations;
-	}
-
-	public Integer getFounded()
-	{
-		return founded;
-	}
-
-	public void setFounded(final Integer founded)
-	{
-		this.founded = founded;
-	}
-
-	public String getDescription()
-	{
-		return description;
-	}
-
-	public void setDescription(final String description)
-	{
-		this.description = description;
-	}
-
-	public Integer getEmployees()
-	{
-		return employees;
-	}
-
-	public void setEmployees(final Integer employees)
-	{
-		this.employees = employees;
-	}
-
-	public String getWebsite()
-	{
-		return website;
-	}
-
-	public void setWebsite(final String website)
-	{
-		this.website = website;
-	}
-
-	public Instant getCreatedAt()
-	{
-		return createdAt;
-	}
-
-	public void setCreatedAt(final Instant createdAt)
-	{
-		this.createdAt = createdAt;
-	}
-
-	public String getCreatedBy()
-	{
-		return createdBy;
-	}
-
-	public void setCreatedBy(final String createdBy)
-	{
-		this.createdBy = createdBy;
-	}
-
-	public Instant getUpdatedAt()
-	{
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(final Instant updatedAt)
-	{
-		this.updatedAt = updatedAt;
-	}
-
-	public String getUpdatedBy()
-	{
-		return updatedBy;
-	}
-
-	public void setUpdatedBy(final String updatedBy)
-	{
-		this.updatedBy = updatedBy;
-	}
 }
