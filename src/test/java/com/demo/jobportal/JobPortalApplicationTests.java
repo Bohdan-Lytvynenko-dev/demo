@@ -8,9 +8,4 @@ import org.springframework.boot.test.context.SpringBootTest;
 class JobPortalApplicationTests
 {
 
-	@Test
-	void contextLoads()
-	{
-	}
-
 }
