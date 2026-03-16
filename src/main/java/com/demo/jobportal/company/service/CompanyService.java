@@ -1,4 +1,4 @@
-package com.demo.jobportal.service;
+package com.demo.jobportal.company.service;
 
 import java.util.List;
 
