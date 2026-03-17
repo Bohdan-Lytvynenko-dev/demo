@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.jobportal.dto.CompanyDto;
-import com.demo.jobportal.service.CompanyService;
+import com.demo.jobportal.company.service.CompanyService;
 
 import lombok.RequiredArgsConstructor;
 
